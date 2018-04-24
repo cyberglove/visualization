@@ -2,33 +2,39 @@
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Threading;
-using System.Collections.Generic;
 
 namespace serialConnection
 {
-    class Program
+    class connectionProgram
     {
+        public UInt32[] values = new UInt32[10];
+        private String[] fingers = { "K", "W", "Ś", "S", "M" };
         private String[] substrings;
         private SerialPort port;
+
+        public string[] Fingers { get => fingers; set => fingers = value; }
+
         [STAThread] //musi być, żeby SerialPort działał
 
         static void Main(string[] args)
         {
-            Program program = new Program();
-            program.doTheThing();
+            connectionProgram program = new connectionProgram();
+            Thread.Sleep(1000);
+            program.DoTheThing();
         }
 
-        private Program()
+        private connectionProgram()
         {
             String[] ports = SerialPort.GetPortNames();
             port = new SerialPort(ports[0], 115200, Parity.None, 8, StopBits.One);
         }
 
-        ~Program()
+        ~connectionProgram()
         {
             port.Close();
         }
-        private void doTheThing()
+
+        private void DoTheThing()
         {
             port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
             port.Open();
@@ -37,14 +43,23 @@ namespace serialConnection
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            String temp = port.ReadLine();
+            String temp = port.ReadLine().Replace("\r", "");
             substrings = temp.Split('|');
-
-            foreach (String s in substrings)
+            if (substrings.Length == 10)
             {
-                Console.Write(s + " ");
+                for(int i=0; i<5; ++i)
+                {
+                    values[i] = Convert.ToUInt32(substrings[i], 10);
+                    Console.Write(fingers[i] + ": " + values[i] + " ");
+                }
+                Console.Write("| ");
+                for (int i = 5; i < 10; ++i)
+                {
+                    values[i] = Convert.ToUInt32(substrings[i], 10);
+                    Console.Write(fingers[i%5] + ": " + values[i] + " ");
+                }
+                Console.WriteLine();
             }
-            Console.Write("\n");
         }
     }
 }
