@@ -1,0 +1,7 @@
+E:\repos\visualization\serialConnection\bin\Release\serialConnection.exe.config
+E:\repos\visualization\serialConnection\bin\Release\serialConnection.exe
+E:\repos\visualization\serialConnection\bin\Release\serialConnection.pdb
+E:\repos\visualization\serialConnection\obj\Release\serialConnection.csprojResolveAssemblyReference.cache
+E:\repos\visualization\serialConnection\obj\Release\serialConnection.csproj.CoreCompileInputs.cache
+E:\repos\visualization\serialConnection\obj\Release\serialConnection.exe
+E:\repos\visualization\serialConnection\obj\Release\serialConnection.pdb
