@@ -10,9 +10,11 @@ namespace serialConnection
 	{
 		public Double[] doubleValues = new Double[10];
 		private Double[] toInterval = { 0.0, 100.0 };
-		private Int32[] fromShort = { 1000, 2000 };
-		private Int32[] fromLong = { 1200, 3400 };
-		private Int32[] fromPressure = { 1000, 3100 };
+		private Int32[] fromKc = { 2530, 1650 };
+		private Int32[] fromWs = { 2760, 1950 };
+		private Int32[] fromSr = { 2860, 1950 };
+		private Int32[] fromSe = { 2550, 1520};
+		private Int32[] fromMa = { 2360, 1570 };
 
 		private Int32 precision = 2;
 		private String[] fingers = { "K", "W", "Ś", "S", "M" };
@@ -57,17 +59,30 @@ namespace serialConnection
 			{
 				for (Int32 i = 0; i < 10; ++i)
 				{
-					if (i < 2)
+					if(i==0)
 					{
-						doubleValues[i] = CalculateMapValue(substrings[i],fromShort[0], fromShort[1], toInterval[0], toInterval[1], precision);
+						doubleValues[i] = CalculateMapValue(substrings[i], fromKc[0], fromKc[1], toInterval[0], toInterval[1], precision);
+
 					}
-					else if (i >= 2 && i < 5)
+					else if(i==1)
 					{
-						doubleValues[i] = CalculateMapValue(substrings[i],fromLong[0],fromLong[1], toInterval[0], toInterval[1], precision);
+						doubleValues[i] = CalculateMapValue(substrings[i], fromWs[0], fromWs[1], toInterval[0], toInterval[1], precision);
+
 					}
-					else if( i >= 5)
+					else if(i==2)
 					{
-						doubleValues[i] = CalculateMapValue(substrings[i],fromPressure[0],fromPressure[1], toInterval[0], toInterval[1], precision);
+						doubleValues[i] = CalculateMapValue(substrings[i], fromSr[0], fromSr[1], toInterval[0], toInterval[1], precision);
+
+					}
+					else if(i==3)
+					{
+						doubleValues[i] = CalculateMapValue(substrings[i], fromSe[0], fromSe[1], toInterval[0], toInterval[1], precision);
+
+					}
+					else if(i==4)
+					{
+						doubleValues[i] = CalculateMapValue(substrings[i], fromMa[0], fromMa[1], toInterval[0], toInterval[1], precision);
+
 					}
 
 					if (i == 5)
