@@ -1,7 +1,0 @@
-E:\repos\visualization\serialConnection\obj\Debug\serialConnection.csproj.CoreCompileInputs.cache
-E:\repos\visualization\serialConnection\bin\Debug\serialConnection.exe.config
-E:\repos\visualization\serialConnection\bin\Debug\serialConnection.exe
-E:\repos\visualization\serialConnection\bin\Debug\serialConnection.pdb
-E:\repos\visualization\serialConnection\obj\Debug\serialConnection.exe
-E:\repos\visualization\serialConnection\obj\Debug\serialConnection.pdb
-E:\repos\visualization\serialConnection\obj\Debug\serialConnection.csprojResolveAssemblyReference.cache
