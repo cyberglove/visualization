@@ -29,13 +29,18 @@ public class Script_dlon : MonoBehaviour
 	public float LightMaly;
 
 	private float[] toInterval = { 0.0f, 100.0f };
-	private Int32[] fromKc = { 2530, 1650 };
-	private Int32[] fromWs = { 2760, 1950 };
-	private Int32[] fromSr = { 2860, 1950 };
-	private Int32[] fromSe = { 2550, 1520 };
-	private Int32[] fromMa = { 2360, 1570 };
-	private Int32[] fromZZ = { 2500, 0 };
+	private Int32[] fromKc = { 2540, 1470 };
+	private Int32[] fromWs = { 2870, 1780 };
+	private Int32[] fromSr = { 2590, 1360 };
+	private Int32[] fromSe = { 2710, 1580 };
+	private Int32[] fromMa = { 2410, 1190 };
+	private Int32[] fromZZ = { 0, 3000 };
 	private Int32 precision = 2;
+
+	void Awake()
+	{
+		Application.targetFrameRate = 50;
+	}
 
 	void Start()
 	{
