@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 967bffd6586c8fd4eb422fd3e633ec01
-timeCreated: 1522926553
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -65,6 +63,7 @@ ModelImporter:
     9500000: //RootNode
     10800000: Lamp
     13700000: Cylinder.004
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,6 +83,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

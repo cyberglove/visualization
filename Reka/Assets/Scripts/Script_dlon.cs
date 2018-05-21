@@ -1,87 +1,183 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.IO.Ports;
 using UnityEngine;
+using UnityEngine.UI;
+using ExtensionMethods;
 
-public class Script_dlon : MonoBehaviour {
+public class Script_dlon : MonoBehaviour
+{
+	private SerialPort port;
 
-    [Range(0, 100)]
-    public float AngleKciuk;
-    [Range(0, 100)]
-    public float AngleWskazujacy;
-    [Range(0, 100)]
-    public float AngleSrodkowy;
-    [Range(0, 100)]
-    public float AngleSerdeczny;
-    [Range(0, 100)]
-    public float AngleMaly;
-    [Range(0, 100)]
-    public float LightKciuk;
-    [Range(0, 100)]
-    public float LightWskazujacy;
-    [Range(0, 100)]
-    public float LightSrodkowy;
-    [Range(0, 100)]
-    public float LightSerdeczny;
-    [Range(0, 100)]
-    public float LightMaly;
+	[Range(0, 100)]
+	public float AngleKciuk;
+	[Range(0, 100)]
+	public float AngleWskazujacy;
+	[Range(0, 100)]
+	public float AngleSrodkowy;
+	[Range(0, 100)]
+	public float AngleSerdeczny;
+	[Range(0, 100)]
+	public float AngleMaly;
+	[Range(0, 100)]
+	public float LightKciuk;
+	[Range(0, 100)]
+	public float LightWskazujacy;
+	[Range(0, 100)]
+	public float LightSrodkowy;
+	[Range(0, 100)]
+	public float LightSerdeczny;
+	[Range(0, 100)]
+	public float LightMaly;
 
-    // Use this for initialization
-    void Start () {
-		
+	private float[] toInterval = { 0.0f, 100.0f };
+	private Int32[] fromKc = { 2540, 1470 };
+	private Int32[] fromWs = { 2870, 1780 };
+	private Int32[] fromSr = { 2590, 1360 };
+	private Int32[] fromSe = { 2710, 1580 };
+	private Int32[] fromMa = { 2410, 1190 };
+	private Int32[] fromZZ = { 0, 3000 };
+	private Int32 precision = 2;
+    Slider[] sliders;
+
+    void Awake()
+	{
+		Application.targetFrameRate = 50;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Start()
+	{
+		String[] ports = SerialPort.GetPortNames();
+		Console.WriteLine(ports[0]);
+		port = new SerialPort(ports[0], 115200, Parity.None, 8, StopBits.One); 
+    }
+
+	void Update()
+	{
+		String data = port.ReadLine();
+		String[] substrings = data.Split('|');
+
+		if (substrings.Length == 10)
+		{
+			AngleKciuk = CalculateMapValue(substrings[0], fromKc[0], fromKc[1], toInterval[0], toInterval[1], precision); ;
+			AngleWskazujacy = CalculateMapValue(substrings[1], fromWs[0], fromWs[1], toInterval[0], toInterval[1], precision);
+			AngleSrodkowy = CalculateMapValue(substrings[2], fromSr[0], fromSr[1], toInterval[0], toInterval[1], precision);
+			AngleSerdeczny = CalculateMapValue(substrings[3], fromSe[0], fromSe[1], toInterval[0], toInterval[1], precision);
+			AngleMaly = CalculateMapValue(substrings[4], fromMa[0], fromMa[1], toInterval[0], toInterval[1], precision);
+
+			LightKciuk = CalculateMapValue(substrings[5], fromZZ[0], fromZZ[1], toInterval[0], toInterval[1], precision);
+			LightWskazujacy = CalculateMapValue(substrings[6], fromZZ[0], fromZZ[1], toInterval[0], toInterval[1], precision);
+			LightSrodkowy = CalculateMapValue(substrings[7], fromZZ[0], fromZZ[1], toInterval[0], toInterval[1], precision);
+			LightSerdeczny = CalculateMapValue(substrings[8], fromZZ[0], fromZZ[1], toInterval[0], toInterval[1], precision);
+			LightMaly = CalculateMapValue(substrings[9], fromZZ[0], fromZZ[1], toInterval[0], toInterval[1], precision);
+
+            sliders = FindObjectsOfType<Slider>() as Slider[];
+            sliders[0].value = AngleKciuk;
+            sliders[1].value = AngleWskazujacy;
+            sliders[2].value = AngleSrodkowy;
+            sliders[3].value = AngleSerdeczny;
+            sliders[4].value = AngleMaly;
+
+            sliders[5].value = LightKciuk;
+            sliders[6].value = LightWskazujacy;
+            sliders[7].value = LightSrodkowy;
+            sliders[8].value = LightSerdeczny;
+            sliders[9].value = LightMaly;
+        }
 	}
 
-    public void AdjustAngleKciuk(float newAngle)
-    {
-        AngleKciuk = newAngle;
-    }
+	public void AdjustAngleKciuk(float newAngle)
+	{
+		AngleKciuk = newAngle;
+	}
 
-    public void AdjustAngleWskazujacy(float newAngle)
-    {
-        AngleWskazujacy = newAngle;
-    }
+	public void AdjustAngleWskazujacy(float newAngle)
+	{
+		AngleWskazujacy = newAngle;
+	}
 
-    public void AdjustAngleSrodkowy(float newAngle)
-    {
-        AngleSrodkowy = newAngle;
-    }
+	public void AdjustAngleSrodkowy(float newAngle)
+	{
+		AngleSrodkowy = newAngle;
+	}
 
-    public void AdjustAngleSerdeczny(float newAngle)
-    {
-        AngleSerdeczny = newAngle;
-    }
+	public void AdjustAngleSerdeczny(float newAngle)
+	{
+		AngleSerdeczny = newAngle;
+	}
 
-    public void AdjustAngleMaly(float newAngle)
-    {
-        AngleMaly = newAngle;
-    }
+	public void AdjustAngleMaly(float newAngle)
+	{
+		AngleMaly = newAngle;
+	}
 
-    public void AdjustLightKciuk(float newLight)
-    {
-        LightKciuk = newLight;
-    }
+	public void AdjustLightKciuk(float newLight)
+	{
+		LightKciuk = newLight;
+	}
 
-    public void AdjustLightWskazujacy(float newLight)
-    {
-        LightWskazujacy = newLight;
-    }
+	public void AdjustLightWskazujacy(float newLight)
+	{
+		LightWskazujacy = newLight;
+	}
 
-    public void AdjustLightSrodkowy(float newLight)
-    {
-        LightSrodkowy = newLight;
-    }
+	public void AdjustLightSrodkowy(float newLight)
+	{
+		LightSrodkowy = newLight;
+	}
 
-    public void AdjustLightSerdeczny(float newLight)
-    {
-        LightSerdeczny = newLight;
-    }
+	public void AdjustLightSerdeczny(float newLight)
+	{
+		LightSerdeczny = newLight;
+	}
 
-    public void AdjustLightMaly(float newLight)
-    {
-        LightMaly = newLight;
+	public void AdjustLightMaly(float newLight)
+	{
+		LightMaly = newLight;
+	}
+
+	float CalculateMapValue(String valueToMap, Int32 fromMin, Int32 fromMax, float toMin, float toMax, Int32 precision)
+	{
+		return (float)Math.Round(Convert.ToInt32(valueToMap, 10).MapValue(fromMin, fromMax, toMin, toMax), precision);
+	}
+
+	public void connect()
+	{
+		if (!port.IsOpen)
+		{
+			port.Open();
+		}
+		else
+		{
+			port.Close();
+		}
+	}
+
+	public void reset()
+	{
+		AngleKciuk = 0.0f;
+		AngleWskazujacy = 0.0f;
+		AngleSrodkowy = 0.0f;
+		AngleSerdeczny = 0.0f;
+		AngleMaly = 0.0f;
+
+		LightKciuk = 0.0f;
+		LightWskazujacy = 0.0f;
+		LightSrodkowy = 0.0f;
+		LightSerdeczny = 0.0f;
+		LightMaly = 0.0f;
+        sliders = FindObjectsOfType<Slider>() as Slider[];
+        for (int i = 0; i < sliders.Length; i++)
+            sliders[i].value = 0;
     }
+}
+
+namespace ExtensionMethods
+{
+	public static class MyExtensions
+	{
+		public static float MapValue(this Int32 value, Int32 fromMin, Int32 fromMax, float toMin, float toMax)
+		{
+			return toMin + (toMax - toMin) * (float)((Convert.ToDouble(value - fromMin) / Convert.ToDouble(fromMax - fromMin)));
+		}
+	}
 }
