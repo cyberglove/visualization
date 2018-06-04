@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour
 
     public Canvas Manual_window;
     public Canvas Transmission_window;
+    public Camera empty_camera;
+    public Camera handy_camera;
 
     private Canvas Menu_window;
 
@@ -17,6 +19,7 @@ public class Menu : MonoBehaviour
 
         Transmission_window.GetComponent<Canvas>().enabled = false;
         Manual_window.GetComponent<Canvas>().enabled = false;
+        handy_camera.GetComponent<Camera>().enabled = false;
     }
 
     // Update is called once per frame
@@ -26,12 +29,17 @@ public class Menu : MonoBehaviour
     {
         Menu_window.enabled = false;
         Transmission_window.enabled = true;
+        empty_camera.enabled = false;
+        handy_camera.enabled = true;
+
     }
 
     public void clicked_manual()
     {
         Menu_window.enabled = false;
         Manual_window.enabled = true;
+        empty_camera.enabled = false;
+        handy_camera.enabled = true;
     }
 
     public void clicked_exit()
@@ -44,7 +52,9 @@ public class Menu : MonoBehaviour
         Transmission_window.enabled = false;
         Manual_window.enabled = false;
         Menu_window.enabled = true;
+        empty_camera.enabled = true;
+        handy_camera.enabled = false;
     }
-            
+
 
 }

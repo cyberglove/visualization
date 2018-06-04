@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-E:/repos/visualization/Reka/Reka.exe
+C:/Users/Mateusz/Downloads/ergfed/ergfed.exe
 SceneListBegin?
 Assets/Scenes/raczka.unity
 SceneListEnd?
@@ -124,6 +124,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_se2
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightW
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_m2
+da087dddbd9a73f69e133994e89d7f2e Assembly-CSharp.dll:.Menu
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightSr
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -166,3 +167,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightM
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_w3
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_sr1
+24eb62448a9588893635f08a8a5b4456 Assembly-CSharp.dll:.InputControl
+6f271d9e3fb9fd38f04e86b481f9f8fd Assembly-CSharp.dll:.CameraController
