@@ -82,6 +82,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+6f271d9e3fb9fd38f04e86b481f9f8fd Assembly-CSharp.dll:.CameraController
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightSe
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_k3
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -123,6 +124,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 18a049f733cf1b3b298d505454740be7 Assembly-CSharp.dll:.Script_dlon
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_se2
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightW
+24eb62448a9588893635f08a8a5b4456 Assembly-CSharp.dll:.InputControl
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_m2
 da087dddbd9a73f69e133994e89d7f2e Assembly-CSharp.dll:.Menu
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightSr
@@ -167,5 +169,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.ScriptLightM
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_w3
 8b637aaebffedc7a64b3f213aa9c1126 Assembly-CSharp.dll:.Script_sr1
-24eb62448a9588893635f08a8a5b4456 Assembly-CSharp.dll:.InputControl
-6f271d9e3fb9fd38f04e86b481f9f8fd Assembly-CSharp.dll:.CameraController
